@@ -3,31 +3,32 @@ import Header from "./header/Header";
 import SideBar from "./left_sidebar/Left";
 import './application.css';
 import styled from "styled-components";
-window.styled = window.styled.default;
+
+// window.styled = window.styled.default;
 
 const AppContainer = styled.div`
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 25% 75%;
 `;
 
-const Title = styled.div`
+const Head = styled.div`
     grid-row: 1 / 2;
     grid-column: 1 / 2;
     background: #BD5027;
     color: #F0F0F0;
-    padding: 5px;
+    padding: 10px;
 `;
 
-const Chat = styled.div`
+const Options = styled.div`
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     background: #276DBD;
 `;
 
-const Table = styled.div`
+const Text = styled.div`
     grid-row: 1 / 3;
     grid-column: 2 / 3;
     background: #2FC849;
@@ -36,12 +37,13 @@ const Table = styled.div`
 export default function Application() {
 
   return (
- <><Header />
-    <div className="container">
-    <SideBar />
-    <Entry />
+ <AppContainer>
+  <Head><Header /></Head>
+    
+    <Options><SideBar /></Options>
+    <Text><Entry /></Text>
    
-    </div>
-    </>
+    </AppContainer>
+    
   )
 }

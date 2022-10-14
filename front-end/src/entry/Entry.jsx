@@ -7,13 +7,22 @@ export default function Entry () {
 
   const [text, setText] = useState("");
   
-  // useEffect(() => {
-  //   <script src="Speech.js"></script>
-  // }, []);
+  function save(transcript) {
+  
+  }
+
+  const listenContinously = () => {
+   SpeechRecognition.startListening({
+    continuous: true
+   })
+  }
+
 
   const {
     transcript,
     listening,
+    interimTranscript,
+    finalTranscript,
     resetTranscript,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
@@ -25,10 +34,11 @@ export default function Entry () {
   return (
     <div>
       <p>Start: {listening ? 'on' : 'off'}</p>
-      <button id="button" onClick={SpeechRecognition.startListening}>Start</button>
+      <button id="button" onClick={listenContinously}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+      <p> {transcript} </p>
+      <button onClick={save}>Save</button>
     </div>
   )}
 
