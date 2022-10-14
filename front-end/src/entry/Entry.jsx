@@ -27,13 +27,19 @@ export default function Entry () {
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
 
+  useEffect(() => {
+    if (finalTranscript !== '') {
+     console.log('Got final result:', finalTranscript);
+    }
+    }, [interimTranscript, finalTranscript]);
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
 
   return (
     <div>
-      <p>Start: {listening ? 'on' : 'off'}</p>
+      <p>Listening: {listening ? 'on' : 'off'}</p>
       <button id="button" onClick={listenContinously}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
