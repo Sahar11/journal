@@ -7,14 +7,16 @@ export default function Entry () {
 
   const [text, setText] = useState("");
   
-  function save(transcript) {
-  
-  }
-
   const listenContinously = () => {
    SpeechRecognition.startListening({
     continuous: true
    })
+  }
+
+  const Submit = () => {
+    useEffect(() => {
+      //axios
+    })
   }
 
 
@@ -30,23 +32,32 @@ export default function Entry () {
   useEffect(() => {
     if (finalTranscript !== '') {
      console.log('Got final result:', finalTranscript);
+     
     }
+    
     }, [interimTranscript, finalTranscript]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
+    
   }
 
   return (
-    <div>
+    <div className="entry-block">
+      <div>
       <p>Listening: {listening ? 'on' : 'off'}</p>
       <button id="button" onClick={listenContinously}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
-      <form>
-      <textarea type="text" value={transcript} />
-      <button onClick={save}>Save</button>
+      </div>
+      <div className="entry-form">
+      <form onSubmit={Submit}>
+        <div>
+      <textarea type="text" defaultValue={transcript} />
+      </div>
+      <button>Save</button>
       </form>
+      </div>
     </div>
   )}
 
