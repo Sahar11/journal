@@ -43,8 +43,10 @@ export default function Entry () {
       <button id="button" onClick={listenContinously}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
-      <p> {transcript} </p>
+      <form>
+      <textarea type="text" value={transcript} />
       <button onClick={save}>Save</button>
+      </form>
     </div>
   )}
 

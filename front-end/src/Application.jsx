@@ -17,21 +17,21 @@ const AppContainer = styled.div`
 const Head = styled.div`
     grid-row: 1 / 2;
     grid-column: 1 / 2;
-    background: #BD5027;
-    color: #F0F0F0;
+    background: #fff;
+    color: #F37654;
     padding: 10px;
 `;
 
 const Options = styled.div`
     grid-row: 2 / 3;
     grid-column: 1 / 2;
-    background: #276DBD;
+    background: #fff;
 `;
 
 const Text = styled.div`
     grid-row: 1 / 3;
     grid-column: 2 / 3;
-    background: #2FC849;
+    background: #fff;
 `;
 
 export default function Application() {
