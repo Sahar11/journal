@@ -13,5 +13,5 @@ app.post('/', (res,req) => {
 });
 
 app.listen(8000, () => {
-  console.log(`App is listening on ${PORT} :)`)
+  console.log(`App is listening 🙂 🙂 `)
 })
