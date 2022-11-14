@@ -21,7 +21,7 @@ export default function Entry () {
 
   const Submit = () => {
     useEffect(() => {
-      axios.post(`localhost:9000/entry/${transcript}`)
+      axios.post(`http://localhost:9000/entry/${transcript}`)
     })
   }
 
@@ -38,7 +38,10 @@ export default function Entry () {
   useEffect(() => {
     if (finalTranscript !== '') {
      console.log('Got final result:', finalTranscript);
-     
+    try {axios.post("http://localhost:9000/entry", finalTranscript)}
+    catch(err) {
+      console.log(err)
+    }
     }
     
     }, [interimTranscript, finalTranscript]);
@@ -50,7 +53,15 @@ export default function Entry () {
 
   return (
     <div className="entry-block">
-      <div>
+     
+      <div className="paper-content">
+      <form onSubmit={Submit}>
+        <div>
+      <textarea type="text" defaultValue={transcript} onChange={e => setText(e.targe )}/>
+      </div>
+      <button>Save</button>
+      </form>
+      <div className="talkBtn">
       <p>Listening: {listening ? 'on' : 'off'}</p>
       {/* <button id="button" onClick={listenContinously}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
@@ -61,14 +72,7 @@ export default function Entry () {
         onMouseUp={SpeechRecognition.stopListening} 
         > Hold to talk </button>
       </div>
-      <div className="entry-form">
-      <form onSubmit={Submit}>
-        <div>
-      <textarea type="text" defaultValue={transcript} />
       </div>
-      <button>Save</button>
-      </form>
-      </div>
-    </div>
+     </div>
   )}
 
