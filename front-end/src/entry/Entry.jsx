@@ -38,7 +38,7 @@ export default function Entry () {
   useEffect(() => {
     if (finalTranscript !== '') {
      console.log('Got final result:', finalTranscript);
-    try {axios.post("http://localhost:9000/entry", finalTranscript)}
+    try {axios.post(`http://localhost:9000/entry/${finalTranscript}`)}
     catch(err) {
       console.log(err)
     }
